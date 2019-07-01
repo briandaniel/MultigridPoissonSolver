@@ -1,0 +1,25 @@
+#!/bin/sh
+
+rm -fr CMake*
+
+# Source
+SOURCE_DIR=../Source/
+# Install
+INSTALL_DIR=../Install/
+
+# Cmake commands
+cmake \
+-D CMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR \
+-D CMAKE_CXX_FLAGS:STRING="-g -O3 -march=native -std=c++0x -fopenmp -fno-var-tracking -fprofile-arcs -ftest-coverage " \
+-D CMAKE_C_FLAGS:STRING="-g -O3 -march=native -std=c++0x -fopenmp -fno-var-tracking -fprofile-arcs -ftest-coverage " \
+\
+$SOURCE_DIR
+
+
+echo "\n! After library finishes compiling you can add the library to your system path using " 
+echo "    LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:<location of the library>\""
+echo "    export LD_LIBRARY_PATH"
+echo "    in .bashrc or other shell configuration file."
+
+
+
